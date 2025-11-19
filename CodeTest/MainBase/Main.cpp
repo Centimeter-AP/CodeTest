@@ -23,17 +23,23 @@ int main()
     cout.tie(0);
     // scanf/printf/puts/getchar/putchar 등 C의 입출력 방식을 사용하면 안 된다.
 
-    int iInputN{}, iInputM{};
-    int iIterInput{};
+    int N{}, M{};
+    int iIter{};
     int a{}, b{};
 
 
-    cin >> iInputN >> iInputM;
+    cin >> N >> M;
 
-    while (iInputM--)
+    while (M--)
     {
 
     }
+
+    for (size_t i = 0; i < N; i++)
+    {
+
+    }
+
     int res{};
 
 

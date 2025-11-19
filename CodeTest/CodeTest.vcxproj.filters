@@ -7,9 +7,6 @@
     <ClCompile Include="Silver\15649.cpp">
       <Filter>Silver</Filter>
     </ClCompile>
-    <ClCompile Include="Silver\11724.cpp">
-      <Filter>Silver</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="00. Main">
