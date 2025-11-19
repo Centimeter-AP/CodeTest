@@ -27,23 +27,28 @@ int main()
     int iIter{};
     int a{}, b{};
     int res{};
+    int dp[12] = {};
 
+    cin >> N;
 
-    cin >> N >> M;
-
-    while (M--)
-    {
-
-    }
+    dp[0] = 0;
+    dp[1] = 1;
+    dp[2] = 2;
+    dp[3] = 4;
 
     for (size_t i = 0; i < N; i++)
     {
-
+        cin >> M;
+        if (M > 3)
+        {
+            for (size_t j = 4; j <= M; j++)
+            {
+                dp[j] = dp[j - 1] + dp[j - 2] + dp[j - 3];
+            }
+        }
+        cout << dp[M] << '\n';
     }
 
-
-
-    cout << res;
 
     return 0;
 }
