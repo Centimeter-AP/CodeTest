@@ -4,7 +4,7 @@
     <ClCompile Include="MainBase\Main.cpp">
       <Filter>00. Main</Filter>
     </ClCompile>
-    <ClCompile Include="1012.cpp">
+    <ClCompile Include="Bronze\2609.cpp">
       <Filter>Silver</Filter>
     </ClCompile>
   </ItemGroup>
