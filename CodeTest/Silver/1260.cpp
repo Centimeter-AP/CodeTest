@@ -23,27 +23,65 @@ int main()
     cout.tie(0);
     // scanf/printf/puts/getchar/putchar 등 C의 입출력 방식을 사용하면 안 된다.
 
-    int N{}, M{};
+    int N{}, M{}, V{};
     int iIter{};
     int a{}, b{};
     int res{};
 
+    vector<int> vecGraph[1001];
 
-    cin >> N >> M;
-
+    cin >> N >> M >> V;
+    
     while (M--)
     {
-
+        cin >> a >> b;
+        vecGraph[a].push_back(b);
+        vecGraph[b].push_back(a);
     }
 
-    for (size_t i = 0; i < N; i++)
+    queue<int> BFSqueue;
+    stack<int> DFSstack;
+
+    BFSqueue.push(V);
+    DFSstack.push(V);
+
+    bool visited[1001] = { false, };
+    while (!DFSstack.empty())
     {
+        int idx = DFSstack.top();
+        DFSstack.pop();
+        if (visited[idx]) continue;
+        cout << idx << " ";
+        visited[idx] = true;
+        sort(vecGraph[idx].begin(), vecGraph[idx].end(), greater<int>());
+        for (auto& node : vecGraph[idx])
+        {
+            if (!visited[node])
+                DFSstack.push(node); // 넣을 때 높은 숫자부터 넣기
+        }
 
     }
 
+    cout << "\n";
+    memset(visited, false, sizeof(bool) * 1001);
+    visited[V] = true;
 
+    while (!BFSqueue.empty())
+    {
+        int idx = BFSqueue.front();
+        cout << idx << " ";
+        BFSqueue.pop();
+        sort(vecGraph[idx].begin(), vecGraph[idx].end(), less<int>());
+        for (auto& node : vecGraph[idx])
+        {
+            if (!visited[node])
+            {
+                BFSqueue.push(node); // 넣을 때 낮은 숫자부터 넣기
+                visited[node] = true;
+            }
+        }
 
-    cout << res;
+    }
 
     return 0;
 }
