@@ -15,7 +15,12 @@
 
 using namespace std;
 
+int paper[128][128];
+int white{}, blue{};
+//w = 0, b = 1
 
+void recursive(int x, int y, int size);
+bool isSame(int x, int y, int size);
 int main()
 {
     ios_base::sync_with_stdio(false);
@@ -28,22 +33,49 @@ int main()
     int a{}, b{};
     int res{};
 
-
-    cin >> N >> M;
-
-    while (M--)
+    cin >> N;
+    int tmp{};
+    int input{};
+    while (tmp < N * N)
     {
-
+        cin >> input;
+        paper[tmp / N][tmp % N] = input;
+        tmp++;
     }
 
-    for (size_t i = 0; i < N; i++)
-    {
+    recursive(0, 0, N);
 
-    }
-
-
-
-    cout << res;
+    cout << white << '\n' << blue;
 
     return 0;
+}
+
+void recursive(int x, int y, int size)
+{
+    if (isSame(x, y, size))
+    {
+        paper[y][x] == 0 ? white++ : blue++;
+        return;
+    }
+    int half = size / 2;
+    if (half < 1)
+        return;
+    recursive(x, y, half);
+    recursive(x + half, y, half);
+    recursive(x, y + half, half);
+    recursive(x + half, y + half, half);
+}
+
+bool isSame(int x, int y, int size)
+{
+    int first = paper[y][x];
+    for (int i = y; i < y + size; i++)
+    {
+        for (int j = x; j < x + size; j++)
+        {
+            if (paper[i][j] != first)
+                return false;
+        }
+    }
+    return true;
 }
