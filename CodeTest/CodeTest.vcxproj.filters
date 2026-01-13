@@ -4,6 +4,7 @@
     <ClCompile Include="MainBase\Main.cpp">
       <Filter>00. Main</Filter>
     </ClCompile>
+    <ClCompile Include="Silver\11725.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="00. Main">
