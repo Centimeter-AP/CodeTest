@@ -73,6 +73,6 @@ int main()
         }
     }
     cout << res;
-
+    delete[] visited;
     return 0;
 }
