@@ -25,33 +25,28 @@ int main()
     int N{}, M{};
     int iIter{};
 
-    vector<vector<int>> vecTable;
-    vector<vector<int>> vecSum;
-
     cin >> N >> M;
-    vecTable.reserve(N);
-    vecSum.reserve(N);
-    for (int i = 0; i < N; i++)
+    vector<vector<int>> vecTable(N + 1, vector<int>(N + 1, 0));
+    vector<vector<int>> vecSum(N + 1, vector<int>(N + 1, 0));
+
+    for (int i = 1; i <= N; i++)
     {
-        vector<int> vecRow;
-        vector<int> vecSumRow;
-        vecRow.reserve(N);
-        vecSumRow.reserve(N);
-        for (int j = 0; j < N; j++)
+        for (int j = 1; j <= N; j++)
         {
             cin >> iIter;
-            vecRow.push_back(iIter);
-            if (!i && !j) vecSumRow.push_back(iIter);
-            //else vecSumRow.push_back(vecSum[] + iIter); 2차원누적합계산식생각할것..
+            vecTable[i][j] = iIter;
+            vecSum[i][j] = vecSum[i - 1][j] + vecSum[i][j - 1] - vecSum[i - 1][j - 1] + iIter;
         }
-        vecTable.push_back(vecRow);
     }
 
     for (int i = 0; i < M; i++)
     {
         int x1{}, y1{}, x2{}, y2{};
         cin >> x1 >> y1 >> x2 >> y2;
+
+        cout << vecSum[x2][y2] - vecSum[x2][y1 - 1] - vecSum[x1 - 1][y2] + vecSum[x1 - 1][y1 - 1] << '\n';
     }
+
 
     return 0;
 }

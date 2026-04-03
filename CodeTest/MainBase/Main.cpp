@@ -14,7 +14,7 @@
 #include <sstream>
 
 using namespace std;
-
+using pii = pair<int, int>;
 
 int main()
 {
